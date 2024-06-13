@@ -1,0 +1,143 @@
+
+
+/*  imagenes */
+div.imagen{
+    margin: 45px auto;
+    padding: 0 10px;
+}
+.imagen img{
+    border-radius: 50%;
+    -webkit-border-radius: 50%;
+    -moz-border-radius: 50%;
+    -ms-border-radius: 50%;
+    -o-border-radius: 50%; 
+    width: 33%;
+    height: auto;
+    padding: 0 10px;
+}
+
+
+.requisitos{
+    background-color: rgb(233, 215, 186);
+    padding: 10px;
+}
+/* lo dejo comentado x que cuando achico la pantalla a menos de 392px de ancho se desborda.*/
+/* .requisitos-art{
+    height: 100vh;
+} */
+
+.btn-cris{
+    background-color: rgb(4, 4, 173);
+    color: darkgrey;
+    border-radius: 15p;
+    -webkit-border-radius: 15px;
+    -moz-border-radius: 15px;
+    -ms-border-radius: 15px;
+    -o-border-radius: 15px;
+
+    /* width: 250px; */
+    display: block;
+    text-align: center;
+    margin: 25px auto;
+    padding: 10px;
+    font-size: 15px;
+    text-decoration: none;
+}
+.center {
+    margin: auto;
+    width: 60%;
+    padding: 10px;
+}
+
+/*  */
+
+
+/* footer */
+
+.footer {
+    background-color: #333;
+    color: #fff;
+    padding: 5px;  
+    text-align: center;
+
+}
+.footer a {
+    color: blue;
+}
+.footer a:active {
+    color:blue;
+}
+
+.footer p{
+    margin: 0;
+    padding: 5px;
+}
+
+/* iconos footer */
+.social{
+        display: flex;
+        justify-content: center;
+        flex-wrap: wrap-reverse;
+        padding: 16px;
+        gap: 8px;
+    }
+.social a{
+        width: 64px;
+        height: 64px;
+        border-radius: 8px;
+        background-color: #ccc;
+        background-position: center;
+        background-size: 36px;
+        background-repeat: no-repeat;
+    }
+.social a:hover{
+        background-color: #eee;
+        background-size: 48px;
+        box-shadow: 0 2px 8px #eb08eb;
+    }
+
+.facebook{
+    background-image: url('../img/icon/facebook.svg');   
+  }
+.instagram{
+    background-image: url('../img/icon/instagram.svg');
+  }
+.twitter{
+    background-image: url('../img/icon/twitter.svg');
+  }
+.github{
+    background-image: url('../img/icon/github.svg');
+  }
+.youtube{
+    background-image: url('../img/icon/youtube.svg');
+  }
+.whatsapp{
+    background-image: url('../img/icon/whatsapp.svg');
+  }
+
+
+@media (max-width:930px){
+    main{
+        padding: 0;
+    }
+    .imagen img{
+        display: block;
+        margin: 0 auto;
+        padding: 10px ;
+        width: 55%;
+        height: auto;
+
+    }
+    img.perro{
+        display: none;
+    }
+
+}
+
+@media (max-width:450px){
+    .social a{
+        width: 48px;
+        height: 48px;
+    }
+
+}

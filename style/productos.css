@@ -1,0 +1,139 @@
+/* productos.css */
+.Productos_Clipped {
+  display: none;
+}
+
+/* Productos  */
+.Productos {
+  /* grid-container */
+  display: grid;
+  margin: 0;
+  padding: 0.5rem;
+}
+
+.Producto {
+  /* grid-item */
+  /* Cada producto es un Flex */
+  margin: 0.5rem;
+  padding: 0.5rem;
+  border: 1px solid rgb(200, 240, 240);
+  /* Flex */
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+
+.Producto img {
+  border-radius: 50%;
+  -webkit-border-radius: 50%;
+  -moz-border-radius: 50%;
+  -ms-border-radius: 50%;
+  -o-border-radius: 50%;
+  width: 30%;
+  height: auto;
+  padding: 0 10px;
+  border: 1px solid rgb(200, 240, 240);
+}
+
+.Producto h4 {
+  font-weight: bold;
+  font-size: large;
+}
+.Producto p:hover {
+  font-style: italic;
+  background-color: azure;
+}
+
+.Producto_btn {
+  background-color: rgb(4, 4, 173);
+  color: darkgrey;
+  border-radius: 15p;
+  -webkit-border-radius: 15px;
+  -moz-border-radius: 15px;
+  -ms-border-radius: 15px;
+  -o-border-radius: 15px;
+  display: block;
+  text-align: center;
+  margin: 10px 10px auto;
+  padding: 10px;
+  font-size: 15px;
+}
+
+.Productos_Grupo_General {
+  margin: 0.5rem;
+  padding: 0.5rem;
+}
+
+.Productos_Grupo_General img {
+  width: 70%;
+}
+
+.Productos_Grupo_Particular img {
+  width: 60%;
+}
+
+/* Notas Pie */
+.Productos_Notas_containerGrid {
+  display: grid;
+  margin: 0.2rem;
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: min-content;
+}
+
+.Productos_Nota_containerGridItem {
+  color: green;
+  margin: 0.2rem;
+}
+
+.Productos_Nota_containerGridItem h4 {
+  font-size: medium;
+  font-weight: bold;
+}
+
+.Productos_Nota_containerGridItem p {
+  font-size: small;
+}
+
+/* Small devices (600px and down) */
+@media only screen and (max-width: 600px) {
+  .Productos {
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: min-content;
+  }
+  .Productos_Notas_containerGrid {
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: min-content;
+  }
+}
+
+/* Small devices (600px and up) */
+@media only screen and (min-width: 600px) {
+  .Productos {
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: min-content;
+  }
+}
+
+/* Medium devices (768px and up) */
+@media only screen and (min-width: 768px) {
+  .Productos {
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: min-content;
+  }
+}
+
+/* Large devices (992px and up) */
+@media only screen and (min-width: 992px) {
+  .Productos {
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: min-content;
+  }
+}
+
+/* Extra large devices (1200px and up) */
+@media only screen and (min-width: 1200px) {
+  .Productos {
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: min-content;
+  }
+}
