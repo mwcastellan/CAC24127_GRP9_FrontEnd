@@ -1,0 +1,10 @@
+.Pedido {
+    margin: 0.5rem;
+    padding: 0.5rem;
+    border: 1px solid rgb(30, 8, 224);
+  }
+  .itemp {
+    margin: 0.5rem;
+    padding: 0.5rem;
+    border: 1px solid rgb(51, 224, 8);
+  }

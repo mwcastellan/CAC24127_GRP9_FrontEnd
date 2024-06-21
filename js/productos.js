@@ -48,6 +48,7 @@ const cargarProductos = async () => {
                            <a class="Producto_btn" href="">Añadir al carrito</a>
                          </article>    `;
       });
+      
       contenedor += `</section>    `;
       contenedor += `</section>    `;
       document.querySelector(".Contenedor").innerHTML = contenedor;
