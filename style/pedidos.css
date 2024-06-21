@@ -1,10 +1,16 @@
+.Pedidos {
+  font-weight: bold;
+  font-size: smaller;
+}
 .Pedido {
-    margin: 0.5rem;
-    padding: 0.5rem;
-    border: 1px solid rgb(30, 8, 224);
-  }
-  .itemp {
-    margin: 0.5rem;
-    padding: 0.5rem;
-    border: 1px solid rgb(51, 224, 8);
-  }
+  margin: 0.1rem;
+  padding: 0.1rem;
+  border: 1px solid rgb(30, 8, 224);
+  font-weight: bold;
+  font-size: smaller;
+}
+.itemp {
+  margin: 0.1rem;
+  padding: 0.1rem;
+  border: 1px solid rgb(51, 224, 8);
+}
