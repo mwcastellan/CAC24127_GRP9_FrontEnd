@@ -29,7 +29,7 @@ const cargarPedidos = async () => {
                        <td class="itemp precio">${pedido.PRECIO}</td>
                        <td class="itemp importe">${pedido.IMPORTE}</td>
                        <td class="itemp estado">${pedido.IDESTADO}</td>
-
+                       
                        </tr>    `;
       });
       contenedor += `</table">`;
