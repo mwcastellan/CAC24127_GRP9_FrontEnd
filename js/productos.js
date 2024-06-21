@@ -18,6 +18,8 @@ const cargarProductos = async () => {
         if (idcategoria != producto.IDCATEGORIA) {
           if (grupocategoria != 0) {
             contenedor += `</section>    `;
+            contenedor += `</section>    `;
+            gruposubcategoria = 0;
           }
           grupocategoria = 1;
           contenedor += `<section class="Productos_Grupo_General">
@@ -48,7 +50,6 @@ const cargarProductos = async () => {
                            <a class="Producto_btn" href="">Añadir al carrito</a>
                          </article>    `;
       });
-      
       contenedor += `</section>    `;
       contenedor += `</section>    `;
       document.querySelector(".Contenedor").innerHTML = contenedor;
