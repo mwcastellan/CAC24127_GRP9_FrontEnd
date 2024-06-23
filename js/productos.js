@@ -1,6 +1,7 @@
 window.addEventListener("load", () => {
   cargarProductos();
 });
+
 // funcion que carga y muestra
 const cargarProductos = async () => {
   try {

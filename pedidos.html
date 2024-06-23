@@ -27,6 +27,7 @@
       rel="stylesheet"
     />
     <link rel="stylesheet" href="./style/default.css" />
+    <link rel="stylesheet" href="./style/pedidos.css" />
     <link
       rel="stylesheet"
       type="text/css"
@@ -38,7 +39,7 @@
     ></script>
   </head>
 
-  <body>
+  <body class="pedidos_body">
     <header>
       <div>
         <!-- Menu Hamburguesa con bootstrap -->
@@ -114,8 +115,96 @@
     </header>
 
     <main>
-      <!-- Detalle de los pedidos -->
-      <section class="Contenedor"></section>
+      <a onclick="agregarPedido()" href="#" class="pedidos_myButton"
+        >Agregar Pedido</a
+      >
+      <table id="pedidos">
+        <thead>
+          <tr>
+            <th>id</th>
+            <th>fecha_compra</th>
+            <th>idcliente</th>
+            <th>idproducto</th>
+            <th>precio</th>
+            <th>cantidad</th>
+            <th>importe</th>
+            <th>estado</th>
+          </tr>
+        </thead>
+        <tbody></tbody>
+      </table>
+
+      <!-- Modal -->
+      <div id="pedidos_modal" class="pedidos_modale" aria-hidden="true">
+        <div class="pedidos_modal-dialog">
+          <div class="pedidos_modal-header">
+            <h2>Datos del Pedido</h2>
+            <a
+              onclick="cerrarModal()"
+              href="#"
+              class="pedidos_btn-close pedidos_closemodale"
+              aria-hidden="true"
+              >&times;</a
+            >
+          </div>
+
+          <div class="pedidos_modal-body">
+            <input
+              id="txtid"
+              type="number"
+              placeholder="id"
+              size="20"
+              readonly
+            />
+            <input
+              id="txtfecha_compra"
+              type="date"
+              placeholder="fecha_compra"
+              size="20"
+            />
+            <input
+              id="txtidcliente"
+              type="number"
+              placeholder="idcliente"
+              size="20"
+            />
+            <input
+              id="txtidproducto"
+              type="number"
+              placeholder="idproducto"
+              size="20"
+            />
+            <input
+              id="txtprecio"
+              type="number"
+              placeholder="precio"
+              size="20"
+            />
+            <input
+              id="txtcantidad"
+              type="number"
+              placeholder="cantidad"
+              size="20"
+            />
+            <input
+              id="txtimporte"
+              type="number"
+              placeholder="importe"
+              size="20"
+            />
+            <input
+              id="txtidestado"
+              type="number"
+              placeholder="idestado"
+              size="20"
+            />
+          </div>
+          <div class="pedidos_modal-footer">
+            <a onclick="save()" href="#" class="pedidos_btn">Guardar</a>
+          </div>
+        </div>
+      </div>
+      <!-- /Modal -->
     </main>
 
     <!-- Pie de pagina -->

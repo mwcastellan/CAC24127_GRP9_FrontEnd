@@ -2,7 +2,6 @@
 @import url(./productos.css);
 @import url(./index.css);
 @import url(./formulario.css);
-@import url(./pedidos.css);
 
 * {
   box-sizing: border-box;
