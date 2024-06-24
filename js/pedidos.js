@@ -93,6 +93,7 @@ function clean() {
 }
 
 async function save() {
+  var url = URL_API + "/";
   var data = {
     FECHA_COMPRA: document.getElementById("txtfecha_compra").value,
     IDCLIENTE: document.getElementById("txtidcliente").value,
@@ -104,19 +105,16 @@ async function save() {
   };
   var id = document.getElementById("txtid").value;
   if ((id = "0")) {
-    var url = URL_API + "/";
     let response = await fetch(url, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
       },
       body: JSON.stringify(data),
-    }).catch((err) => {
-      console.log(`ERROR : ${err.response.data}`);
     });
-  } else {
-    // MODIFCAR //URL_API + "/";
-    var url = ""; //method: "PUT",
-    console.log(`MODIFCAR : ${JSON.stringify(data)}`);
+
+    //.catch((err) => {
+    // console.error(`ERROR : ${err.response.data}`);
+    //});
   }
 }
