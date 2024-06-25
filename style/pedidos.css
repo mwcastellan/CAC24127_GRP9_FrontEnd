@@ -1,8 +1,9 @@
-#pedidos {
+/*#pedidos {
   font-family: Arial, Helvetica, sans-serif;
   border-collapse: collapse;
   width: 100%;
 }
+*/
 
 #pedidos td,
 #pedidos th {
@@ -81,7 +82,7 @@
 }
 
 #pedidos_body {
-  font-family: sans-serif;
+  /*  font-family: sans-serif;*/
   color: #333;
 }
 
@@ -147,9 +148,9 @@
   text-align: center;
   position: fixed;
   left: 50%;
-  top: -100%;
+  top: 50%;
   z-index: 11;
-  width: 360px;
+  width:460px;
   box-shadow: 0 5px 10px rgba(0, 0, 0, 0.3);
   -webkit-transform: translate(0, -500%);
   -ms-transform: translate(0, -500%);
@@ -168,7 +169,7 @@
   border: 1px solid #ddd;
   color: #888;
   outline: 0;
-  font-size: 14px;
+  /* font-size: 14px;*/
   font-weight: bold;
 }
 .pedidos_modal-header,
@@ -178,6 +179,6 @@
 .pedidos_modal-header {
   border-bottom: #eeeeee solid 1px;
 }
-.pedidos_modal-header h2 {
+/*.pedidos_modal-header h2 {
   font-size: 20px;
-}
+}*/

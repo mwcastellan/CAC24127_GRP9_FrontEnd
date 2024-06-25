@@ -22,6 +22,7 @@ function cerrarModal() {
   htmlModal.setAttribute("class", "pedidos_modale");
 }
 
+// TRAER PEDIDOS
 async function search() {
   var url = URL_API;
   var response = await fetch(url, {
@@ -66,17 +67,25 @@ function edit(id) {
   document.getElementById("txtidestado").value = pedido.IDESTADO;
 }
 
+// ELIMINAR PEDIDO - PENDIENTE
 async function remove(id) {
-  respuesta = confirm("¿Está seguro de eliminar: " + id + " ?");
+  respuesta = confirm("¿Está seguro de eliminar el Pedido Nro: " + id + " ?");
   if (respuesta) {
-    // ELIMINAR -- PENDIENTE
     var url = URL_API + "/" + id;
-    await fetch(url, {
+    let response = await fetch(url, {
       method: "DELETE",
       headers: {
         "Content-Type": "application/json",
       },
-    });
+    })
+      .then((response) => {
+        if (response.status == 200)
+          alert("Eliminar: Pedido eliminado correctamente");
+        else alert("Eliminar(then): Error al grabar: " + response.status);
+      })
+      .catch((err) => {
+        alert("Eliminar: Error al grabar: " + err.status);
+      });
     window.location.reload();
   }
 }
@@ -90,10 +99,11 @@ function clean() {
   document.getElementById("txtcantidad").value = 0;
   document.getElementById("txtimporte").value = 0;
   document.getElementById("txtidestado").value = 1;
+  document.getElementById("txtmsg").value = "Mensaje";
 }
 
+// ALTA O MODIFICACION DE PEDIDOS
 async function save() {
-  var url = URL_API + "/";
   var data = {
     FECHA_COMPRA: document.getElementById("txtfecha_compra").value,
     IDCLIENTE: document.getElementById("txtidcliente").value,
@@ -104,17 +114,52 @@ async function save() {
     IDESTADO: document.getElementById("txtidestado").value,
   };
   var id = document.getElementById("txtid").value;
-  if ((id = "0")) {
+  // ALTA
+  if (id == "0") {
+    var url = URL_API + "/";
     let response = await fetch(url, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
       },
       body: JSON.stringify(data),
-    });
-
-    //.catch((err) => {
-    // console.error(`ERROR : ${err.response.data}`);
-    //});
+    })
+      .then((response) => {
+        if (response.status == 200)
+          document.getElementById("txtmsg").value =
+            "Alta: Pedido agregado correctamente";
+        else
+          document.getElementById("txtmsg").value =
+            "Alta: Error al grabar:" + response.status;
+      })
+      .catch((err) => {
+        err.response &&
+          err.response.data &&
+          this.setState({ apiResponse: err.response.data });
+      });
+  }
+  // MODIFICACION
+  else {
+    var url = URL_API + "/" + id;
+    let response = await fetch(url, {
+      method: "PUT",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(data),
+    })
+      .then((response) => {
+        if (response.status == 200)
+          document.getElementById("txtmsg").value =
+            "Modificacion: Pedido modificado correctamente";
+        else
+          document.getElementById("txtmsg").value =
+            "Modificacion: Error al grabar:" + response.status;
+      })
+      .catch((err) => {
+        err.response &&
+          err.response.data &&
+          this.setState({ apiResponse: err.response.data });
+      });
   }
 }
