@@ -1,10 +1,3 @@
-/*#pedidos {
-  font-family: Arial, Helvetica, sans-serif;
-  border-collapse: collapse;
-  width: 100%;
-}
-*/
-
 #pedidos td,
 #pedidos th {
   border: 1px solid #ddd;
@@ -23,8 +16,8 @@
   padding-top: 12px;
   padding-bottom: 12px;
   text-align: left;
-  background-color: #04aa6d;
-  color: white;
+  background-color: rgb(200, 240, 240);
+  color: black;
 }
 
 .pedidos_myButton {
@@ -36,9 +29,6 @@
   display: inline-block;
   cursor: pointer;
   color: #ffffff;
-  font-family: Arial;
-  font-size: 15px;
-  font-weight: bold;
   padding: 6px 24px;
   text-decoration: none;
   text-shadow: 0px -1px 0px #5b6178;
@@ -63,9 +53,6 @@
   display: inline-block;
   cursor: pointer;
   color: #ffffff;
-  font-family: Arial;
-  font-size: 15px;
-  font-weight: bold;
   padding: 6px 24px;
   text-decoration: none;
   text-shadow: 0px -1px 0px #5b6178;
@@ -82,7 +69,6 @@
 }
 
 #pedidos_body {
-  /*  font-family: sans-serif;*/
   color: #333;
 }
 
@@ -92,7 +78,6 @@
   border-radius: 3px;
   color: #fff;
   display: inline-block;
-  font-size: 14px;
   padding: 8px 15px;
   text-decoration: none;
   text-align: center;
@@ -104,13 +89,11 @@
   background: #357ebd;
 }
 .pedidos_btn.btn-big {
-  font-size: 18px;
   padding: 15px 20px;
   min-width: 100px;
 }
 .pedidos_btn-close {
   color: #aaaaaa;
-  font-size: 20px;
   text-decoration: none;
   padding: 10px;
   position: absolute;
@@ -150,7 +133,7 @@
   left: 50%;
   top: 50%;
   z-index: 11;
-  width:460px;
+  width: 460px;
   box-shadow: 0 5px 10px rgba(0, 0, 0, 0.3);
   -webkit-transform: translate(0, -500%);
   -ms-transform: translate(0, -500%);
@@ -169,8 +152,8 @@
   border: 1px solid #ddd;
   color: #888;
   outline: 0;
-  /* font-size: 14px;*/
-  font-weight: bold;
+ 
+ /* font-weight: bold;*/
 }
 .pedidos_modal-header,
 .pedidos_modal-footer {
@@ -179,6 +162,3 @@
 .pedidos_modal-header {
   border-bottom: #eeeeee solid 1px;
 }
-/*.pedidos_modal-header h2 {
-  font-size: 20px;
-}*/
