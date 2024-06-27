@@ -68,6 +68,7 @@
   top: 1px;
 }
 
+/* Formulario de captura para alta o modificacion. */
 #pedidos_body {
   color: #333;
 }
@@ -131,7 +132,7 @@
   text-align: center;
   position: fixed;
   left: 50%;
-  top: 50%;
+  top: 100%;
   z-index: 11;
   width: 460px;
   box-shadow: 0 5px 10px rgba(0, 0, 0, 0.3);
@@ -144,16 +145,16 @@
   transition: transform 0.3s ease-out;
 }
 .pedidos_modal-body {
-  padding: 20px;
+  padding: 10px;
 }
 .pedidos_modal-body input {
-  width: 200px;
+  width:auto;
   padding: 8px;
   border: 1px solid #ddd;
   color: #888;
   outline: 0;
- 
- /* font-weight: bold;*/
+
+  /* font-weight: bold;*/
 }
 .pedidos_modal-header,
 .pedidos_modal-footer {
