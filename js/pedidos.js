@@ -114,7 +114,7 @@ async function save() {
     IDESTADO: document.getElementById("txtidestado").value,
   };
   var id = document.getElementById("txtid").value;
-  // ALTA
+  // ALTA //
   if (id == "0") {
     var url = URL_API + "/";
     let response = await fetch(url, {
