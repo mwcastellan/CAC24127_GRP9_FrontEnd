@@ -1,7 +1,7 @@
 document.addEventListener("DOMContentLoaded", init);
 const URL_API = "https://tpo-nodejs-bb.vercel.app/pedidos";
 
-var customers = [];
+var customers = []; 
  
 function init() {
   search();
