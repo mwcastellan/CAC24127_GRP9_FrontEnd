@@ -1,8 +1,8 @@
 document.addEventListener("DOMContentLoaded", init);
-const URL_API = "https://tpo-nodejs-bb.vercel.app/pedidos"; 
+const URL_API = "https://tpo-nodejs-bb.vercel.app/pedidos";
 
-var customers = []; 
- 
+var customers = [];
+
 function init() {
   search();
 }
@@ -113,53 +113,54 @@ async function save() {
     IMPORTE: document.getElementById("txtimporte").value,
     IDESTADO: document.getElementById("txtidestado").value,
   };
+
   var id = document.getElementById("txtid").value;
   // ALTA //
   if (id == "0") {
     var url = URL_API + "/";
-    let response = await fetch(url, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(data),
-    })
-      .then((response) => {
-        if (response.status == 200)
-          document.getElementById("txtmsg").value =
-            "Alta: Pedido agregado correctamente";
-        else
-          document.getElementById("txtmsg").value =
-            "Alta: Error al grabar:" + response.status;
+    axios
+      .post(url, data)
+      .then((respuesta) => {
+        document.querySelector("#txtmsg").innerHTML =
+          "<p>Registro agregado</p>";
       })
-      .catch((err) => {
-        err.response &&
-          err.response.data &&
-          this.setState({ apiResponse: err.response.data });
+      .catch((error) => {
+        if (error.response && error.response.status === 422) {
+          console.log(error.response.data.message);
+          const errores = error.response.data.message;
+          let mensajesdeError = "<ul>";
+          errores.forEach(
+            (error) => (mensajesdeError += "<li>" + error.msg + "</li>")
+          );
+          mensajesdeError += "</ul>";
+          document.querySelector("#txtmsg").innerHTML = mensajesdeError;
+        } else {
+          console.error(`Error en la solicitud "${error.message}`);
+        }
       });
   }
   // MODIFICACION
   else {
     var url = URL_API + "/" + id;
-    let response = await fetch(url, {
-      method: "PUT",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(data),
-    })
-      .then((response) => {
-        if (response.status == 200)
-          document.getElementById("txtmsg").value =
-            "Modificacion: Pedido modificado correctamente";
-        else
-          document.getElementById("txtmsg").value =
-            "Modificacion: Error al grabar:" + response.status;
+    axios
+      .put(url, data)
+      .then((respuesta) => {
+        document.querySelector("#txtmsg").innerHTML =
+          "<p>Registro actualizado</p>";
       })
-      .catch((err) => {
-        err.response &&
-          err.response.data &&
-          this.setState({ apiResponse: err.response.data });
+      .catch((error) => {
+        if (error.response && error.response.status === 422) {
+          console.log(error.response.data.message);
+          const errores = error.response.data.message;
+          let mensajesdeError = "<ul>";
+          errores.forEach(
+            (error) => (mensajesdeError += "<li>" + error.msg + "</li>")
+          );
+          mensajesdeError += "</ul>";
+          document.querySelector("#txtmsg").innerHTML = mensajesdeError;
+        } else {
+          console.error(`Error en la solicitud "${error.message}`);
+        }
       });
   }
 }
