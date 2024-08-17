@@ -25,33 +25,28 @@ function cerrarModal() {
 // TRAER PEDIDOS
 async function search() {
   var url = URL_API;
-  var response = await fetch(url, {
-    method: "GET",
-    headers: {
-      "Content-Type": "application/json",
-    },
+  axios.get(url).then((respuesta) => {
+    pedidos = respuesta.data;
+    var html = "";
+    for (pedido of pedidos) {
+      var row = `<tr>
+      <td>${pedido.id}</td>
+      <td>${pedido.FECHA_COMPRA}</td>
+      <td>${pedido.IDCLIENTE}</td>
+      <td>${pedido.IDPRODUCTO}</td>
+      <td>${pedido.PRECIO}</td>
+      <td>${pedido.CANTIDAD}</td>
+      <td>${pedido.IMPORTE}</td>
+      <td>${pedido.IDESTADO}</td>
+      <td>
+        <a href="#" onclick="edit(${pedido.id})" class="pedidos_myButton">Editar</a>
+        <a href="#" onclick="remove(${pedido.id})" class="pedidos_btnDelete">Eliminar</a>
+      </td>
+    </tr>`;
+      html = html + row;
+    }
+    document.querySelector("#pedidos > tbody").outerHTML = html;
   });
-  pedidos = await response.json();
-  var html = "";
-  for (pedido of pedidos) {
-    var row = `<tr>
-    <td>${pedido.id}</td>
-    <td>${pedido.FECHA_COMPRA}</td>
-    <td>${pedido.IDCLIENTE}</td>
-    <td>${pedido.IDPRODUCTO}</td>
-    <td>${pedido.PRECIO}</td>
-    <td>${pedido.CANTIDAD}</td>
-    <td>${pedido.IMPORTE}</td>
-    <td>${pedido.IDESTADO}</td>
-    <td>
-      <a href="#" onclick="edit(${pedido.id})" class="pedidos_myButton">Editar</a>
-      <a href="#" onclick="remove(${pedido.id})" class="pedidos_btnDelete">Eliminar</a>
-    </td>
-  </tr>`;
-    html = html + row;
-  }
-
-  document.querySelector("#pedidos > tbody").outerHTML = html;
 }
 
 function edit(id) {
