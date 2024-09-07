@@ -1,5 +1,5 @@
 document.addEventListener("DOMContentLoaded", init);
-const URL_API = "https://tpo-nodejs-bb.vercel.app/pedidos";
+const URL_API = "https://tpo-nodejs-bb.vercel.app/pedidos"; //"https://tpo-nodejs-bb.vercel.app/pedidos"; "http://localhost:3030/pedidos/clientes"
 
 var customers = [];
 
@@ -25,7 +25,12 @@ function cerrarModal() {
 // TRAER PEDIDOS
 async function search() {
   var url = URL_API;
-  axios.get(url).then((respuesta) => {
+  try {
+    const headers = {
+      "Content-Type": "application/json",
+      Cookie: "tpo_nodejs_bb",
+    };
+    let respuesta = await axios(url);
     pedidos = respuesta.data;
     var html = "";
     for (pedido of pedidos) {
@@ -46,7 +51,9 @@ async function search() {
       html = html + row;
     }
     document.querySelector("#pedidos > tbody").outerHTML = html;
-  });
+  } catch (error) {
+    console.log(error);
+  }
 }
 
 function edit(id) {

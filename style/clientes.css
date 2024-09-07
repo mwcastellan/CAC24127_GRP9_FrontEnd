@@ -1,0 +1,36 @@
+.clientes_btn {
+  background: #428bca;
+  border: #357ebd solid 0px;
+  border-radius: 1px;
+  color: #fff;
+  display: inline-block;
+  padding: 1px 1px;
+  text-decoration: none;
+  text-align: center;
+  min-width: 1px;
+  position: relative;
+  transition: color 0.1s ease;
+}
+.clientes_btn:hover {
+  background: #357ebd;
+}
+.clientes_btn.btn-big {
+  padding: 1px 1px;
+  min-width: 1px;
+}
+.clientes_btn-close {
+  color: #aaaaaa;
+  text-decoration: none;
+  padding: 1px;
+  position: absolute;
+  right: 1px;
+  top: 0;
+}
+.clientes_btn-close:hover {
+  color: #919191;
+}
+
+.clientes_modal-footer {
+  padding: 1px 2px;
+}
+

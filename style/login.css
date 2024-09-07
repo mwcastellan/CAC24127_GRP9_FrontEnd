@@ -1,0 +1,36 @@
+.login_btn {
+  background: #428bca;
+  border: #357ebd solid 0px;
+  border-radius: 1px;
+  color: #fff;
+  display: inline-block;
+  padding: 1px 1px;
+  text-decoration: none;
+  text-align: center;
+  min-width: 1px;
+  position: relative;
+  transition: color 0.1s ease;
+}
+.login_btn:hover {
+  background: #357ebd;
+}
+.login_btn.btn-big {
+  padding: 1px 1px;
+  min-width: 1px;
+}
+.login_btn-close {
+  color: #aaaaaa;
+  text-decoration: none;
+  padding: 1px;
+  position: absolute;
+  right: 1px;
+  top: 0;
+}
+.login_btn-close:hover {
+  color: #919191;
+}
+
+.login_modal-footer {
+  padding: 1px 2px;
+}
+
