@@ -7,15 +7,7 @@ async function login() {
   };
   var url = URL_API;
   axios
-    .post(
-      url,
-      data,
-      {
-        "Content-Type": "application/json",
-        "Access-Control-Allow-Origin": "https://tpo-nodejs-bb.vercel.app",
-      },
-      { withCredentials: true }
-    )
+    .post(url, data, { withCredentials: true })
     .then((res) => {
       const ress = res.data.message;
       let mensajesdeRes = "<ul>";

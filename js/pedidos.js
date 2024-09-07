@@ -26,11 +26,7 @@ function cerrarModal() {
 async function search() {
   var url = URL_API;
   try {
-    const headers = {
-      "Content-Type": "application/json",
-      Cookie: "tpo_nodejs_bb",
-    };
-    let respuesta = await axios(url);
+    let respuesta = await axios(url, { withCredentials: true });
     pedidos = respuesta.data;
     var html = "";
     for (pedido of pedidos) {
