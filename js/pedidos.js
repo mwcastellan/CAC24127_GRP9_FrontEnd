@@ -1,5 +1,5 @@
 document.addEventListener("DOMContentLoaded", init);
-const URL_API = "https://tpo-nodejs-bb.vercel.app/pedidos"; //"https://tpo-nodejs-bb.vercel.app/pedidos"; "http://localhost:3030/pedidos/clientes"
+const URL_API = "https://tpo-nodejs-bb.vercel.app/pedidos/clientes"; //"https://tpo-nodejs-bb.vercel.app/pedidos"; "http://localhost:3030/pedidos/clientes"
 
 var customers = [];
 
