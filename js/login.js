@@ -6,11 +6,16 @@ async function login() {
     PASSWORD: document.getElementById("PASSWORD").value,
   };
   var url = URL_API;
-  const headers = {
-    "Content-Type": "application/json",
-  };
   axios
-    .post(url, data, headers)
+    .post(
+      url,
+      data,
+      {
+        "Content-Type": "application/json",
+        "Access-Control-Allow-Origin": "https://tpo-nodejs-bb.vercel.app",
+      },
+      { withCredentials: true }
+    )
     .then((res) => {
       const ress = res.data.message;
       let mensajesdeRes = "<ul>";
