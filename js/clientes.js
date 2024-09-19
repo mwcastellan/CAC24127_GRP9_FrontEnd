@@ -1,4 +1,4 @@
-const URL_API = "http://localhost:3030/clientes"; // "https://tpo-nodejs-bb.vercel.app/clientes";
+const URL_API = "https://tpo-nodejs-bf.vercel.app/clientes/registrar";
 // ALTA CLIENTES
 async function save() {
   var data = {
@@ -8,13 +8,25 @@ async function save() {
     DIRECCION: document.getElementById("DIRECCION").value,
     PASSWORD: document.getElementById("PASSWORD").value,
   };
-  var url = URL_API + "/";
+  var url = URL_API;
   axios
-    .post(url, data)
-    .then((respuesta) => {
-      document.querySelector("#txtmsg").innerHTML = "<p>Cliente agregado</p>";
+    .post(url, data, {
+      withCredentials: true,
+      headers: {
+        Accept: "application/json",
+        "Content-Type": "application/json",
+      },
+    })
+    .then((res) => {
+      console.log("then");
+      const ress = res.data.message;
+      let mensajesdeRes = "<ul>";
+      ress.forEach((ressi) => (mensajesdeRes += "<li>" + ressi.msg + "</li>"));
+      mensajesdeRes += "</ul>";
+      document.querySelector("#txtmsg").innerHTML = mensajesdeRes;
     })
     .catch((error) => {
+      console.log("catch");
       if (error.response && error.response.status === 422) {
         console.log(error.response.data.message);
         const errores = error.response.data.message;
@@ -25,7 +37,7 @@ async function save() {
         mensajesdeError += "</ul>";
         document.querySelector("#txtmsg").innerHTML = mensajesdeError;
       } else {
-        console.log(`Error en la solicitud "${error.message}`);
+        console.error(`Error en la solicitud "${error.message}`);
       }
     });
 }

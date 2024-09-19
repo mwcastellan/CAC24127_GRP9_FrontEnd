@@ -1,5 +1,5 @@
 document.addEventListener("DOMContentLoaded", init);
-const URL_API = "https://tpo-nodejs-bb.vercel.app/pedidos/clientes"; //"https://tpo-nodejs-bb.vercel.app/pedidos"; "http://localhost:3030/pedidos/clientes"
+const URL_API = "https://tpo-nodejs-bf.vercel.app/pedidos";
 
 var customers = [];
 
@@ -24,9 +24,16 @@ function cerrarModal() {
 
 // TRAER PEDIDOS
 async function search() {
-  var url = URL_API;
+  var url = URL_API + "/ver";
   try {
-    let respuesta = await axios(url, { withCredentials: true });
+    let respuesta = await axios.get(url, {
+      withCredentials: true,
+      // credentials: "include",
+      headers: {
+        Accept: "application/json",
+        "Content-Type": "application/json",
+      },
+    });
     pedidos = respuesta.data;
     var html = "";
     for (pedido of pedidos) {
@@ -48,6 +55,7 @@ async function search() {
     }
     document.querySelector("#pedidos > tbody").outerHTML = html;
   } catch (error) {
+    console.log("error...");
     console.log(error);
   }
 }
@@ -69,17 +77,20 @@ function edit(id) {
 async function remove(id) {
   respuesta = confirm("¿Está seguro de eliminar el Pedido Nro: " + id + " ?");
   if (respuesta) {
-    var url = URL_API + "/" + id;
-    let response = await fetch(url, {
-      method: "DELETE",
-      headers: {
-        "Content-Type": "application/json",
-      },
-    })
-      .then((response) => {
-        if (response.status == 200)
+    var url = URL_API + "/borrar/" + id;
+    let respuesta = await axios
+      .delete(url, {
+        withCredentials: true,
+        // credentials: "include",
+        headers: {
+          Accept: "application/json",
+          "Content-Type": "application/json",
+        },
+      })
+      .then((respuesta) => {
+        if (respuesta.status == 200)
           alert("Eliminar: Pedido eliminado correctamente");
-        else alert("Eliminar(then): Error al grabar: " + response.status);
+        else alert("Eliminar(then): Error al grabar: " + respuesta.status);
       })
       .catch((err) => {
         alert("Eliminar: Error al grabar: " + err.status);
@@ -91,7 +102,7 @@ async function remove(id) {
 function clean() {
   document.getElementById("txtid").value = 0;
   document.getElementById("txtfecha_compra").value = "";
-  document.getElementById("txtidcliente").value = 0;
+  // document.getElementById("txtidcliente").value = 0;
   document.getElementById("txtidproducto").value = 0;
   document.getElementById("txtprecio").value = 0;
   document.getElementById("txtcantidad").value = 0;
@@ -115,14 +126,27 @@ async function save() {
   var id = document.getElementById("txtid").value;
   // ALTA //
   if (id == "0") {
-    var url = URL_API + "/";
+    var url = URL_API + "/crear";
     axios
-      .post(url, data)
-      .then((respuesta) => {
-        document.querySelector("#txtmsg").innerHTML =
-          "<p>Registro agregado</p>";
+      .post(url, data, {
+        withCredentials: true,
+        headers: {
+          Accept: "application/json",
+          "Content-Type": "application/json",
+        },
+      })
+      .then((res) => {
+        console.log("then");
+        const ress = res.data.message;
+        let mensajesdeRes = "<ul>";
+        ress.forEach(
+          (ressi) => (mensajesdeRes += "<li>" + ressi.msg + "</li>")
+        );
+        mensajesdeRes += "</ul>";
+        document.querySelector("#txtmsg").innerHTML = mensajesdeRes;
       })
       .catch((error) => {
+        console.log("catch");
         if (error.response && error.response.status === 422) {
           console.log(error.response.data.message);
           const errores = error.response.data.message;
@@ -139,9 +163,15 @@ async function save() {
   }
   // MODIFICACION
   else {
-    var url = URL_API + "/" + id;
+    var url = URL_API + "/actualizar/" + id;
     axios
-      .put(url, data)
+      .put(url, data, {
+        withCredentials: true,
+        headers: {
+          Accept: "application/json",
+          "Content-Type": "application/json",
+        },
+      })
       .then((respuesta) => {
         document.querySelector("#txtmsg").innerHTML =
           "<p>Registro actualizado</p>";

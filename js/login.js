@@ -1,4 +1,4 @@
-const URL_API = "https://tpo-nodejs-bb.vercel.app/clientes/login"; // "https://tpo-nodejs-bb.vercel.app/clientes/login"; http://localhost:3030/clientes/login
+const URL_API = "https://tpo-nodejs-bf.vercel.app/clientes/login";
 // LOGIN CLIENTES
 async function login() {
   var data = {
@@ -7,7 +7,13 @@ async function login() {
   };
   var url = URL_API;
   axios
-    .post(url, data, { withCredentials: true })
+    .post(url, data, {
+      withCredentials: true,
+      headers: {
+        Accept: "application/json",
+        "Content-Type": "application/json",
+      },
+    })
     .then((res) => {
       const ress = res.data.message;
       let mensajesdeRes = "<ul>";
