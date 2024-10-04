@@ -25,6 +25,7 @@ function cerrarModal() {
 // TRAER PEDIDOS
 async function search() {
   var url = URL_API + "/ver";
+  var html = "";
   try {
     let respuesta = await axios.get(url, {
       withCredentials: true,
@@ -35,7 +36,6 @@ async function search() {
       },
     });
     pedidos = respuesta.data;
-    var html = "";
     for (pedido of pedidos) {
       var row = `<tr>
       <td>${pedido.id}</td>
@@ -55,8 +55,8 @@ async function search() {
     }
     document.querySelector("#pedidos > tbody").outerHTML = html;
   } catch (error) {
-    console.log("error...");
-    console.log(error);
+    html = "Sin novedad - " + error.status + " - " + error.message;
+    document.querySelector("#pedidos > tbody").outerHTML = html;
   }
 }
 
@@ -136,7 +136,6 @@ async function save() {
         },
       })
       .then((res) => {
-        console.log("then");
         const ress = res.data.message;
         let mensajesdeRes = "<ul>";
         ress.forEach(
@@ -146,9 +145,7 @@ async function save() {
         document.querySelector("#txtmsg").innerHTML = mensajesdeRes;
       })
       .catch((error) => {
-        console.log("catch");
         if (error.response && error.response.status === 422) {
-          console.log(error.response.data.message);
           const errores = error.response.data.message;
           let mensajesdeError = "<ul>";
           errores.forEach(
@@ -157,7 +154,8 @@ async function save() {
           mensajesdeError += "</ul>";
           document.querySelector("#txtmsg").innerHTML = mensajesdeError;
         } else {
-          console.error(`Error en la solicitud "${error.message}`);
+          let mensajesdeError = "<ul><li>" + error.message + "</li> </ul>";
+          document.querySelector("#txtmsg").innerHTML = mensajesdeError;
         }
       });
   }
@@ -178,7 +176,6 @@ async function save() {
       })
       .catch((error) => {
         if (error.response && error.response.status === 422) {
-          console.log(error.response.data.message);
           const errores = error.response.data.message;
           let mensajesdeError = "<ul>";
           errores.forEach(
@@ -187,7 +184,8 @@ async function save() {
           mensajesdeError += "</ul>";
           document.querySelector("#txtmsg").innerHTML = mensajesdeError;
         } else {
-          console.error(`Error en la solicitud "${error.message}`);
+          let mensajesdeError = "<ul><li>" + error.message + "</li> </ul>";
+          document.querySelector("#txtmsg").innerHTML = mensajesdeError;
         }
       });
   }
